@@ -1,6 +1,6 @@
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
-import reduxPromise from 'redux-promise';
+import { asyncRedux, stateValidator } from 'middlewares';
 import reducers from 'reducers';
 
 const composeEnhancer =
@@ -12,7 +12,7 @@ const Root = ({ children, initialState = {} }) => {
   const store = createStore(
     reducers,
     initialState,
-    composeEnhancer(applyMiddleware(reduxPromise))
+    composeEnhancer(applyMiddleware(asyncRedux, stateValidator))
   );
   return <Provider store={store}>{children}</Provider>;
 };
