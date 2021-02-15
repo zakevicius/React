@@ -1,11 +1,12 @@
+import { Route } from 'react-router-dom';
 import CommentBox from 'components/CommentBox';
 import CommentList from 'components/CommentList';
 
 const App = () => {
   return (
     <div>
-      <CommentBox />
-      <CommentList />
+      <Route path='/post' component={CommentBox} />
+      <Route exact path='/' component={CommentList} />
     </div>
   );
 };
