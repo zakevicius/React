@@ -6,7 +6,7 @@ const commentsReducer = (state = [], { type, payload }) => {
       return [...state, payload];
     case FETCH_COMMENTS:
       const comments = payload.data.map((c) => c.name);
-      return [...state, ...comments];
+      return [...comments];
     default:
       return state;
   }

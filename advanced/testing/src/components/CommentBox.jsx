@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import requireAuth from 'components/requireAuth';
 import { connect } from 'react-redux';
 import { fetchComments, saveComment } from 'actions';
 
@@ -30,4 +31,6 @@ const CommentBox = ({ saveComment, fetchComments }) => {
   );
 };
 
-export default connect(null, { saveComment, fetchComments })(CommentBox);
+export default connect(null, { fetchComments, saveComment })(
+  requireAuth(CommentBox)
+);
